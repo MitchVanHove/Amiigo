@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Amiigo</title>
+  </head>
+
+  <body>
+    <header>
+      <img src="IMG/Amiigo_Header.png" alt="" />
+    </header>
+    <nav>
+      <img src="IMG/Amiigo_All.png" alt="All" />
+      <img src="IMG/Amiigo_Have.png" alt="Have" />
+      <img src="IMG/Amiigo_Need.png" alt="Need" />
+    </nav>
+
+    <main>
+      <h1 id="itemCounter">All (154)</h1>
+      <select id="sort">
+        <option value="name">Name</option>
+        <option value="type">Type</option>
+        <option value="releaseDate">Release date</option>
+        <option value="series">Series</option>
+      </select>
+      <div id="amiiboCollection">
+        <!-- <img src="https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00340102.png"
+                alt="mario">
+            Mario -->
+        Amiibo inladen
+      </div>
+    </main>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-storage.js"></script>
+    <script type="module" src="./js/index.js"></script>
+  </body>
+</html>
