@@ -9,7 +9,7 @@ class AmiiboAPI {
 
   async getAllAmiiboData() {
     let response = await fetch(
-      `https://www.amiiboapi.com/api/amiibo/?type=Figure`
+      `https://www.amiiboapi.com/api/amiibo/?type=Figure&amiiboSeries=Super Smash Bros.`
     );
     let data = await response.json();
     return data;

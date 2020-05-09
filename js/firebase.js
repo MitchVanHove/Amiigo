@@ -17,6 +17,14 @@ class Firebase {
   get amiiboCollection() {
     return this.database.collection("amiibo");
   }
+
+  addAmiibo(id) {
+    this.amiiboCollection.doc(id).set({});
+  }
+
+  removeAmiibo(id) {
+    this.amiiboCollection.doc(id).delete();
+  }
 }
 
 export const firebaseInstance = new Firebase(
