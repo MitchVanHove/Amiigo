@@ -14,19 +14,24 @@ class Firebase {
       ...item.data(),
     }));
   }
+
+  // Haalt alle amiibo van Firebase
   get amiiboCollection() {
     return this.database.collection("amiibo");
   }
 
+  // Voegt amiibo toe aan Firebase
   addAmiibo(id) {
     this.amiiboCollection.doc(id).set({});
   }
 
+  // Verwijdert amiibo van Firebase
   removeAmiibo(id) {
     this.amiiboCollection.doc(id).delete();
   }
 }
 
+// Maakt een instantie van de klasse om op andere plaatsen te gebruiken
 export const firebaseInstance = new Firebase(
   "AIzaSyBiqoqbhrX-Xu2qZIHzlsVmlTcRaIQ77YA",
   "amiigo-aa4c1",

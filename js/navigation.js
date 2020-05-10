@@ -1,6 +1,7 @@
 import { amiiboCards } from "./amiiboCards.js";
 
 class Navigation {
+  // het binden van eventlisteners aan de nodige navigatieknoppen en aan de sorteer dropdown
   bindEvents() {
     document
       .getElementById("allButton")

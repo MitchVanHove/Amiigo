@@ -1,4 +1,5 @@
 class Sorter {
+  // Sorteer afhankelijk van welke sorteer type gebruikt wordt
   sort(data, sortField) {
     switch (sortField) {
       case "Name": {

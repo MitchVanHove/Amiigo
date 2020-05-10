@@ -5,11 +5,22 @@ import { sorter } from "./sorter.js";
 
 class AmiiboCards {
   constructor() {
+    // htmlElement wordt gebruikt om alle nodige html in te voeren
     this.htmlElement = document.getElementById("amiiboCollection");
+
+    // dataCache wordt gebruikt om de rendered data te beheren
     this.dataCache = [];
+
+    // checkedAmiibo wordt gebruikt als collectie om de gechekte amiibo id's bij te houden
     this.checkedAmiibo = [];
+
+    // allAmiibo is om de amiibo van de de firebase bij te houden
     this.amiiboData = [];
+
+    // rerenderFunction wordt bijgehouden om te refreshen als een actie gebeurt
     this.rerenderFunction;
+
+    // amiiboData wordt gebruikt om alle info van amiibo bij te houden
     this.allAmiibo = [];
 
     firebaseInstance.amiiboCollection.onSnapshot((querySnapshot) => {
@@ -19,6 +30,7 @@ class AmiiboCards {
     });
   }
 
+  // Per amiibo card laten we de eventlisteners zich verbinden
   bindEventsToAmiibo() {
     this.dataCache.forEach((data) => {
       const amiibo = new AmiiboCard(data);
@@ -26,12 +38,14 @@ class AmiiboCards {
     });
   }
 
+  // De specifieke amiibo op het scherm renderen
   renderAmiiboOnScreen(amiibo) {
     let htmlString = this.htmlElement.innerHTML;
     htmlString += amiibo.htmlString;
     this.htmlElement.innerHTML = htmlString;
   }
 
+  // De amiibo die de gebruiker niet heeft renderen op het scherm
   renderUncheckedAmiibo() {
     console.log("rendering unchecked amiibo");
     this.checkedAmiibo = this.amiiboData.map((x) => x.id);
@@ -49,6 +63,7 @@ class AmiiboCards {
     this.rerenderFunction = this.renderUncheckedAmiibo;
   }
 
+  // De amiibo die de gebruiker wel heeft renderen op het scherm
   renderCheckedAmiibo() {
     this.dataCache = [];
     this.checkedAmiibo = this.amiiboData.map((x) => x.id);
@@ -68,6 +83,7 @@ class AmiiboCards {
     this.rerenderFunction = this.renderCheckedAmiibo;
   }
 
+  // Alle amiibo renderen op het scherm
   renderAllAmiibo() {
     console.log("rendering all amiibo");
     this.dataCache = [];
@@ -92,6 +108,7 @@ class AmiiboCards {
     this.rerenderFunction = this.renderAllAmiibo;
   }
 
+  // De datacache laten sorteren afhankelijk van welk sort er gebruikt wordt
   sort() {
     const select = document.getElementById("sort");
     const option = select.options[select.selectedIndex].text;
@@ -99,6 +116,7 @@ class AmiiboCards {
     this.render();
   }
 
+  // Het renderen van de amiibo die in de dataCache zitten
   render() {
     this.htmlElement.innerHTML = "";
     if (!this.dataCache.length) {
@@ -113,4 +131,6 @@ class AmiiboCards {
 }
 
 export const amiiboCards = new AmiiboCards();
-window.setTimeout(amiiboCards.renderAllAmiibo.bind(amiiboCards), 500); // We wachten op de response van de firebase
+
+// We wachten op de response van de firebase
+window.setTimeout(amiiboCards.renderAllAmiibo.bind(amiiboCards), 500);
