@@ -24,6 +24,7 @@ nav > img {
   margin: 0px;
   border: 0px;
   display: inline-block;
+  cursor: pointer;
 }
 
 .amiibo {
@@ -43,6 +44,7 @@ nav > img {
   margin-bottom: 10px;
   float: left;
 }
+
 .amiiboInfo {
   line-height: 30px;
   margin-left: 30px;
@@ -51,6 +53,7 @@ nav > img {
   float: left;
   width: 250px;
 }
+
 .amiiboInfo::first-line {
   font-weight: bold;
 }
@@ -58,4 +61,5 @@ nav > img {
 .buttons {
   margin-top: 5%;
   float: left;
+  cursor: pointer;
 }
